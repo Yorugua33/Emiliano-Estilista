@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMILIANO ESTILISTA UNISEX • Premium Hair & Beauty System</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <style>
+    :root {
+      --bg-deep: #050305;
+      --card-bg: rgba(15, 8, 12, 0.92);
+      --accent-neon: #ff1e56;
+      --accent-gold: #d4af37;
+      --border-rock: rgba(255, 30, 86, 0.35);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1a060f 0%, #0a0307 50%, #030103 100%);
+      background-attachment: fixed;
+      color: #f1e4ec;
+    }
+
+    .font-luxury { font-family: 'Cinzel', serif; }
+
+    @keyframes neonGlow {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 30, 86, 0.6), 0 0 20px rgba(255, 30, 86, 0.3); }
+      50% { text-shadow: 0 0 20px rgba(255, 30, 86, 0.9), 0 0 35px rgba(255, 30, 86, 0.6); }
+    }
+
+    .neon-title { animation: neonGlow 3s infinite ease-in-out; }
+
+    .card-3d {
+      background: var(--card-bg);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--border-rock);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-3d:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 30, 86, 0.6);
+      box-shadow: 0 30px 60px -12px rgba(255, 30, 86, 0.4);
+    }
+
+    .btn-rock {
+      background: linear-gradient(135deg, #111111 0%, #2a0814 50%, #ff1e56 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 30, 86, 0.5);
+      box-shadow: 0 4px 20px rgba(255, 30, 86, 0.3);
+      font-weight: 800;
+      transition: all 0.3s ease;
+    }
+    .btn-rock:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(255, 30, 86, 0.6);
+      border-color: #ff1e56;
+    }
+
+    .input-rock {
+      background: rgba(8, 4, 6, 0.9) !important;
+      border: 1px solid rgba(255, 30, 86, 0.3) !important;
+      color: #f1e4ec !important;
+    }
+    .input-rock:focus {
+      border-color: #ff1e56 !important;
+      box-shadow: 0 0 15px rgba(255, 30, 86, 0.25);
+    }
+
+    .salon-fachada-bg {
+      background: linear-gradient(180deg, rgba(5,3,5,0.3) 0%, rgba(5,3,5,0.85) 100%),
+                  url('https://i.imgur.com/oYdz2YP.jpeg');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 30, 86, 0.4);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 20s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050305; }
+    ::-webkit-scrollbar-thumb { background: #3a0d1d; border-radius: 6px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ff1e56; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+  <script>
+    const LICENCIA_GLOBAL = {
+      sistema: "Global Beauty System - Emiliano Edition",
+      propietario: "Marcelo Muraña",
+      contacto: "marcelomur49@gmail.com",
+      whatsapp: "2254440222",
+      marcaRegistrada: "Global System®",
+      fechaExpiracion: "2026-12-31", 
+      autorizado: true
+    };
+  </script>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 backdrop-blur-2xl bg-black/90 border-b border-pink-900/40 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-4">
+        <!-- LOGO OFICIAL REEMPLAZANDO LA TIJERA -->
+        <div class="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-pink-600/60 shadow-[0_0_15px_rgba(255,30,86,0.4)] bg-black flex items-center justify-center p-1">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9lz25eAegLW8hFfHn3TK3uD94m7PPWbO1pClPHxd5Ag&s" alt="Emiliano Logo" class="w-full h-full object-contain">
+        </div>
+        <div>
+          <h1 class="text-2xl font-black font-luxury tracking-widest text-white neon-title">
+            EMILIANO ESTILISTA UNISEX <span class="text-pink-600">•</span> Since 1995
+          </h1>
+          <p class="text-[10px] tracking-[0.2em] text-pink-600 uppercase font-bold">
+            Hair Studio
+          </p>
+        </div>
+      </div>
+
+      <nav class="flex flex-wrap gap-1.5 bg-zinc-950/70 p-1.5 rounded-2xl border border-pink-900/40 backdrop-blur-md">
+        <button onclick="switchTab('galeria')" id="btn-galeria" class="tab-btn active px-4 py-2 rounded-xl text-xs flex items-center gap-2 btn-rock">
+          <i data-lucide="sparkles" class="w-4 h-4"></i> Catálogo 
+        </button>
+        <button onclick="switchTab('clientes')" id="btn-clientes" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold text-pink-200/70 hover:text-white transition flex items-center gap-2">
+          <i data-lucide="users" class="w-4 h-4"></i> Clientes
+        </button>
+        <button onclick="switchTab('turnos')" id="btn-turnos" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold text-pink-200/70 hover:text-white transition flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i> Reservar Cita
+        </button>
+        <button onclick="switchTab('propietario')" id="btn-propietario" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold text-amber-400/90 hover:text-amber-300 transition flex items-center gap-2 border border-amber-500/30 bg-amber-950/20">
+          <i data-lucide="shield-alert" class="w-4 h-4"></i> Propietario
+        </button>
+        <button onclick="switchTab('respaldo')" id="btn-respaldo" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold text-pink-200/70 hover:text-white transition flex items-center gap-2">
+          <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Respaldo
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CARRUSEL DE MARCAS EN FRANJA DEDICADA -->
+  <section class="bg-black/95 border-b border-pink-950/80 py-3 overflow-hidden shadow-inner">
+    <div class="max-w-7xl mx-auto flex items-center gap-4 px-4">
+      <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase whitespace-nowrap bg-amber-950/40 px-3 py-1 rounded-full border border-amber-500/30 flex items-center gap-1.5">
+        <i data-lucide="award" class="w-3.5 h-3.5"></i> Marcas Oficiales
+      </span>
+      
+      <div class="overflow-hidden w-full relative">
+        <div class="animate-marquee flex items-center justify-around gap-12">
+          
+          <div class="flex items-center gap-2 opacity-90 hover:opacity-100 transition px-4">
+            <span class="text-white font-serif text-lg font-bold tracking-widest uppercase">L'ORÉAL</span>
+            <span class="text-[9px] text-zinc-400 font-sans tracking-widest block">PROFESSIONNEL</span>
+          </div>
+
+          <div class="flex items-center gap-2 opacity-90 hover:opacity-100 transition px-4">
+            <span class="text-amber-400 text-lg font-black tracking-widest uppercase">HAIRSSIME</span>
+            <span class="text-[9px] text-pink-400 font-sans tracking-wider block">PARIS</span>
+          </div>
+
+          <div class="flex items-center gap-2 opacity-90 hover:opacity-100 transition px-4">
+            <span class="text-white text-lg font-extrabold tracking-wider uppercase">QUESTION</span>
+            <span class="text-[9px] text-amber-400 font-sans tracking-widest block">PRO</span>
+          </div>
+
+          <!-- Loop continuo -->
+          <div class="flex items-center gap-2 opacity-90 hover:opacity-100 transition px-4">
+            <span class="text-white font-serif text-lg font-bold tracking-widest uppercase">L'ORÉAL</span>
+            <span class="text-[9px] text-zinc-400 font-sans tracking-widest block">PROFESSIONNEL</span>
+          </div>
+
+          <div class="flex items-center gap-2 opacity-90 hover:opacity-100 transition px-4">
+            <span class="text-amber-400 text-lg font-black tracking-widest uppercase">HAIRSSIME</span>
+            <span class="text-[9px] text-pink-400 font-sans tracking-wider block">PARIS</span>
+          </div>
+
+          <div class="flex items-center gap-2 opacity-90 hover:opacity-100 transition px-4">
+            <span class="text-white text-lg font-extrabold tracking-wider uppercase">QUESTION</span>
+            <span class="text-[9px] text-amber-400 font-sans tracking-widest block">PRO</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full mb-auto space-y-8">
+
+    <!-- PORTADA PRINCIPAL -->
+    <section class="card-3d rounded-3xl overflow-hidden border border-pink-900/50 grid grid-cols-1 lg:grid-cols-3">
+      <div class="lg:col-span-2 relative min-h-[320px] sm:min-h-[360px] overflow-hidden flex flex-col justify-end salon-fachada-bg p-8 sm:p-10">
+        
+        <div class="relative z-10 space-y-4">
+          <h2 class="text-3xl sm:text-4xl font-black font-luxury text-white neon-title">ESTILO Y TENDENCIAS</h2>
+          <p class="text-xs sm:text-sm text-pink-100/90 font-medium">Excelencia capilar unisex</p>
+        </div>
+      </div>
+      
+      <!-- HORARIOS Y DIRECCIÓN -->
+      <div class="p-8 bg-black/95 flex flex-col justify-center space-y-5 border-t lg:border-t-0 lg:border-l border-pink-900/40">
+        <div class="flex items-center gap-3">
+          <div class="p-3 bg-pink-850/60 rounded-2xl border border-pink-800/40 text-pink-200">
+            <i data-lucide="map-pin" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="text-[10px] uppercase font-bold text-pink-400 tracking-wider">Ubicación del Salón</span>
+            <p class="text-sm font-bold text-white font-luxury">Constitución 1629, Pinamar</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="p-3 bg-amber-850/60 rounded-2xl border border-amber-600/40 text-amber-400">
+            <i data-lucide="clock" class="w-10 h-10"></i>
+          </div>
+          <div>
+            <span class="text-[10px] uppercase font-bold text-amber-400 tracking-wider">Horarios de Atención</span>
+            <p class="text-xs font-bold text-pink-100">Martes a Sábados:<br>10:00 a 13:00 y 16:30 a 20:30 Hs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS -->
+    <section id="tab-galeria" class="tab-content animate-fade space-y-6">
+      <div class="card-3d p-6 rounded-3xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 class="text-xl font-bold font-luxury text-white flex items-center gap-2">
+            <i data-lucide="flame" class="text-pink-500 w-6 h-6"></i> Catálogo Exclusivo Emiliano Estilista
+          </h2>
+          <p class="text-xs text-pink-200/60 mt-1">Servicios profesionales unisex organizados por categoría.</p>
+        </div>
+        
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filtrarGaleria('TODOS')" id="filtro-todos" class="px-3.5 py-2 rounded-xl text-xs font-bold btn-rock">Todos</button>
+          <button onclick="filtrarGaleria('CORTES Y ESTILOS')" id="filtro-cortes y estilos" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-zinc-900 text-pink-300 border border-pink-900/40">Cortes y Estilos</button>
+          <button onclick="filtrarGaleria('COLORIMETRÍA')" id="filtro-colorimetría" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-zinc-900 text-pink-300 border border-pink-900/40">Colorimetría</button>
+          <button onclick="filtrarGaleria('BALAYAGE Y MECHAS')" id="filtro-balayage y mechas" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-zinc-900 text-amber-300 border border-amber-900/40">Balayage y Mechas</button>
+          <button onclick="filtrarGaleria('TRATAMIENTOS')" id="filtro-tratamientos" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-zinc-900 text-pink-300 border border-pink-900/40">Tratamientos</button>
+        </div>
+      </div>
+
+      <div id="grid-galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- PROPIETARIO -->
+    <section id="tab-propietario" class="tab-content hidden animate-fade space-y-6 max-w-2xl mx-auto">
+      <div class="card-3d p-8 rounded-3xl space-y-6 border border-amber-500/40">
+        <div class="flex items-center gap-3 border-b border-pink-900/40 pb-4">
+          <div class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl border border-amber-500/30">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold font-luxury text-white">Panel Exclusivo de Propietario</h2>
+            <p class="text-xs text-amber-300/80">Solo el propietario autorizado puede modificar las fotografías de los servicios.</p>
+          </div>
+        </div>
+
+        <div id="propietario-auth-box" class="space-y-4">
+          <p class="text-xs text-pink-200/80">Introduce tu clave de seguridad de propietario para desbloquear la edición de imágenes:</p>
+          <div class="flex gap-2">
+            <input type="password" id="prop-pin" placeholder="Clave (ej: 1995)" class="input-rock flex-1 rounded-2xl px-4 py-3 text-xs outline-none font-mono">
+            <button onclick="verificarPinPropietario()" class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded-2xl text-xs transition">Desbloquear</button>
+          </div>
+        </div>
+
+        <div id="propietario-panel-content" class="hidden space-y-4 pt-2">
+          <div class="p-4 bg-emerald-950/30 border border-emerald-500/30 rounded-2xl flex items-center justify-between">
+            <span class="text-xs text-emerald-300 font-bold flex items-center gap-2"><i data-lucide="unlock" class="w-4 h-4"></i> Acceso Propietario Concedido</span>
+            <button onclick="bloquearPropietario()" class="text-xs text-pink-400 hover:underline">Bloquear</button>
+          </div>
+          <p class="text-xs text-pink-200/70">Ahora puedes ir al <button onclick="switchTab('galeria')" class="text-amber-400 font-bold underline">Catálogo HD</button> y hacer clic en *"Cambiar Foto"* en cualquiera de las tarjetas de servicios.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="tab-clientes" class="tab-content hidden animate-fade space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="card-3d p-6 rounded-3xl space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2"><i data-lucide="user-plus" class="w-5 h-5 text-pink-500"></i> Registrarse / Cliente</h3>
+          <form id="form-cliente" class="space-y-4">
+            <input type="text" id="cli-nombre" placeholder="Nombre y Apellido" required class="input-rock w-full rounded-2xl px-4 py-3 text-xs outline-none">
+            <input type="tel" id="cli-telefono" placeholder="WhatsApp / Teléfono" required class="input-rock w-full rounded-2xl px-4 py-3 text-xs outline-none">
+            <button type="submit" class="w-full py-3.5 btn-rock rounded-2xl text-xs transition">Registrar Mis Datos</button>
+          </form>
+        </div>
+        <div class="lg:col-span-2 card-3d p-6 rounded-3xl space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2"><i data-lucide="users" class="w-5 h-5 text-pink-400"></i> Directorio Underground</h3>
+          <div id="lista-clientes" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[440px] overflow-y-auto pr-1"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="tab-turnos" class="tab-content hidden animate-fade space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="card-3d p-6 rounded-3xl space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2"><i data-lucide="calendar-plus" class="w-5 h-5 text-pink-500"></i> Reservar Cita HD</h3>
+          <form id="form-turno" class="space-y-4">
+            <select id="turno-cliente" required class="input-rock w-full rounded-2xl px-4 py-3 text-xs outline-none">
+              <option value="" class="bg-zinc-900 text-white">Seleccionar Cliente</option>
+            </select>
+            <div class="space-y-3 bg-pink-950/20 p-4 rounded-2xl border border-pink-900/40">
+              <div class="flex justify-between items-center">
+                <label class="block text-[10px] font-bold text-pink-300 uppercase tracking-wider">Servicios Seleccionados</label>
+                <button type="button" onclick="limpiarOpciones()" class="text-[10px] text-pink-400 hover:underline">Limpiar</button>
+              </div>
+              <div id="lista-opciones-seleccionadas" class="space-y-2 max-h-32 overflow-y-auto pr-1 text-xs">
+                <span class="text-zinc-500 text-[11px] italic">Ningún servicio añadido...</span>
+              </div>
+              <select id="select-agregar-opcion" onchange="agregarOpcionServicio(this.value)" class="input-rock w-full rounded-xl px-3 py-2 text-xs outline-none">
+                <option value="" class="bg-zinc-900 text-white">+ Añadir servicio...</option>
+              </select>
+              <div class="pt-2 border-t border-pink-900/40 flex justify-between items-center font-bold text-xs">
+                <span class="text-pink-200">Total Referencia:</span>
+                <span class="text-amber-400 font-mono text-sm">$<span id="monto-total-turnos">0.00</span></span>
+              </div>
+            </div>
+            <div class="space-y-3 bg-pink-950/20 p-4 rounded-2xl border border-pink-900/40">
+              <label class="block text-[10px] font-bold text-pink-300 uppercase tracking-wider">Fecha & Horario</label>
+              <div class="flex gap-2">
+                <input type="date" id="turno-fecha-dia" required onchange="actualizarBotonHorario()" class="input-rock w-1/2 rounded-xl px-3 py-2 text-xs outline-none">
+                <button type="button" onclick="toggleSelectorHorarios()" id="btn-mostrar-horarios" class="w-1/2 bg-zinc-900 border border-pink-900/40 text-pink-300 rounded-xl px-2 py-2 text-xs transition flex items-center justify-center gap-1.5">
+                  <i data-lucide="clock" class="w-3.5 h-3.5"></i> <span id="lbl-hora-seleccionada">Elegir Hora</span>
+                </button>
+              </div>
+              <input type="hidden" id="turno-hora-val" required>
+              <div id="panel-horarios" class="hidden bg-black/95 border border-pink-600/40 rounded-2xl p-3 space-y-2 shadow-2xl">
+                <div id="grid-horas" class="grid grid-cols-3 gap-2 max-h-36 overflow-y-auto pr-1"></div>
+              </div>
+            </div>
+            <button type="submit" class="w-full py-3.5 btn-rock rounded-2xl text-xs transition">Confirmar Reserva de Cita</button>
+          </form>
+        </div>
+        <div class="lg:col-span-2 card-3d p-6 rounded-3xl space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 text-amber-400"></i> Citas / Reservas Programadas</h3>
+          <div id="lista-turnos" class="space-y-3 max-h-[440px] overflow-y-auto pr-1"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPALDO -->
+    <section id="tab-respaldo" class="tab-content hidden animate-fade max-w-xl mx-auto">
+      <div class="card-3d p-10 rounded-3xl text-center space-y-6">
+        <div class="p-5 bg-pink-600/20 text-pink-400 rounded-3xl w-20 h-20 mx-auto flex items-center justify-center border border-pink-500/30">
+          <i data-lucide="file-spreadsheet" class="w-10 h-10"></i>
+        </div>
+        <h2 class="text-2xl font-black font-luxury text-white">Respaldo General Excel</h2>
+        <button onclick="exportarExcel()" class="w-full py-3.5 btn-rock rounded-2xl text-xs font-bold transition">Descargar Respaldo (.xlsx)</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-pink-900/40 bg-black/90 py-6 text-center text-xs text-pink-200/70 backdrop-blur-md mt-auto">
+    <div class="max-w-7xl mx-auto px-4 space-y-2 font-sans">
+      <p class="font-bold text-pink-400 text-sm tracking-wider">EMILIANO ESTILISTA UNISEX • Constitución 1629, Pinamar</p>
+      <p class="text-[11px] text-pink-200/80 font-sans">Global System® — Desarrollado por Marcelo Muraña | WhatsApp: 2254440222</p>
+      <p class="text-[9px] text-pink-500/60 uppercase tracking-widest mt-1">Horarios: Martes a Sábados de 10:00 a 13:00 y 16:30 a 20:30</p>
+    </div>
+  </footer>
+
+  <script>
+    const ESTILOS_BASE = [
+      { id: 1, categoria: "CORTES Y ESTILOS", nombre: "Corte de Autor Damas + Brushing", precio: 25000, img: "https://i.imgur.com/SuWx4MP.jpeg" },
+      { id: 2, categoria: "CORTES Y ESTILOS", nombre: "Skin Fade Rockabilly + Barba Navaja", precio: 22000, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2vCwRlvUjs1qpT8dIWNK2vCR7T2BLr6YJysQa8WoBg&s=10" },
+      { id: 3, categoria: "CORTES Y ESTILOS", nombre: "Corte French Bob Tendencia", precio: 25000, img: "https://i.imgur.com/mR6kRyL.jpeg" },
+      { id: 4, categoria: "CORTES Y ESTILOS", nombre: "Mid Fade Texturizado + Perfilado", precio: 20000, img: "https://i.imgur.com/0YebNXG.jpeg" },
+      { id: 5, categoria: "CORTES Y ESTILOS", nombre: "Peinado Editorial Glamour Studio", precio: 35000, img: "https://i.imgur.com/SxZU0Wi.jpeg" },
+
+      { id: 10, categoria: "COLORIMETRÍA", nombre: "Tintura Global L'Oréal Professionnel", precio: 42000, img: "https://i.imgur.com/2WuLvTk.jpeg" },
+      { id: 11, categoria: "COLORIMETRÍA", nombre: "Retoque de Raíz + Baño de Brillo", precio: 28000, img: "https://i.imgur.com/5qj6Qzu.jpeg" },
+      { id: 12, categoria: "COLORIMETRÍA", nombre: "Decoloración Global + Matiz Hairssime", precio: 60000, img: "https://i.imgur.com/2TJT8m4.jpeg" },
+      { id: 13, categoria: "COLORIMETRÍA", nombre: "Color Fantasía / Flúor Under Question", precio: 48000, img: "https://i.imgur.com/rskAlGQ.jpeg" },
+
+      { id: 20, categoria: "BALAYAGE Y MECHAS", nombre: "Balayage Personalizado L'Oréal", precio: 65000, img: "https://i.imgur.com/2WvPgWq.jpeg" },
+      { id: 21, categoria: "BALAYAGE Y MECHAS", nombre: "Mechas Platinadas HD + Matiz", precio: 58000, img: "https://i.imgur.com/1JT8AMS.jpeg" },
+      { id: 22, categoria: "BALAYAGE Y MECHAS", nombre: "Babylights Iluminación Global", precio: 54000, img: "https://i.imgur.com/Els9G9w.jpeg" },
+      { id: 23, categoria: "BALAYAGE Y MECHAS", nombre: "Balayage Contouring Caramelo", precio: 62000, img: "https://i.imgur.com/nCI7XPM.jpeg" },
+
+      { id: 30, categoria: "TRATAMIENTOS", nombre: "Alisado Orgánico Extremo L'Oréal", precio: 45000, img: "https://i.imgur.com/rswl9X0.jpeg" },
+      { id: 31, categoria: "TRATAMIENTOS", nombre: "Botox Capilar Restaurador Profundo", precio: 32000, img: "https://i.imgur.com/sZRyirA.jpeg" },
+      { id: 32, categoria: "TRATAMIENTOS", nombre: "Cocktail de nutrición Hairssime", precio: 28000, img: "https://i.imgur.com/xcwySRK.jpeg" },
+      { id: 33, categoria: "TRATAMIENTOS", nombre: "Spa Capilar Detox Question", precio: 29000, img: "https://i.imgur.com/XyUlkO4.jpeg" }
+    ];
+
+    const HORARIOS_PLANTILLA = ["10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"];
+    
+    let opcionesSeleccionadas = [];
+    let filtroActual = 'TODOS';
+    let propietarioDesbloqueado = false;
+    let db;
+
+    const req = indexedDB.open("EmilianoUndergroundDB", 20);
+
+    req.onupgradeneeded = (e) => {
+      db = e.target.result;
+      if (!db.objectStoreNames.contains("clientes")) db.createObjectStore("clientes", { keyPath: "id", autoIncrement: true });
+      if (!db.objectStoreNames.contains("turnos")) db.createObjectStore("turnos", { keyPath: "id", autoIncrement: true });
+      if (!db.objectStoreNames.contains("fotos")) db.createObjectStore("fotos", { keyPath: "id" });
+    };
+
+    req.onsuccess = (e) => {
+      db = e.target.result;
+      document.getElementById("turno-fecha-dia").value = new Date().toISOString().split('T')[0];
+      poblarSelectOpciones();
+      renderGaleria();
+      cargarClientes();
+      cargarTurnos();
+      lucide.createIcons();
+    };
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('btn-rock');
+        b.classList.add('text-pink-200/70');
+      });
+      document.getElementById(`tab-${tab}`).classList.remove('hidden');
+      if(tab !== 'propietario' && tab !== 'respaldo') {
+        const active = document.getElementById(`btn-${tab}`);
+        active.classList.add('btn-rock');
+        active.classList.remove('text-pink-200/70');
+      }
+    }
+
+    function verificarPinPropietario() {
+      const pin = document.getElementById("prop-pin").value;
+      if(pin === "1995" || pin === "marcelo") {
+        propietarioDesbloqueado = true;
+        document.getElementById("propietario-auth-box").classList.add("hidden");
+        document.getElementById("propietario-panel-content").classList.remove("hidden");
+        alert("¡Acceso de Propietario Concedido! Ya puedes editar las fotos en el catálogo.");
+        renderGaleria();
+      } else {
+        alert("Clave incorrecta. (Prueba con el año: 1995)");
+      }
+    }
+
+    function bloquearPropietario() {
+      propietarioDesbloqueado = false;
+      document.getElementById("propietario-auth-box").classList.remove("hidden");
+      document.getElementById("propietario-panel-content").classList.add("hidden");
+      document.getElementById("prop-pin").value = "";
+      renderGaleria();
+    }
+
+    function filtrarGaleria(filtro) {
+      filtroActual = filtro;
+      ['todos', 'cortes y estilos', 'colorimetría', 'balayage y mechas', 'tratamientos'].forEach(f => {
+        const btn = document.getElementById(`filtro-${f}`);
+        if(btn) btn.className = `px-3.5 py-2 rounded-xl text-xs font-bold ${f.toUpperCase() === filtro ? 'btn-rock' : 'bg-zinc-900 text-pink-300 border border-pink-900/40'}`;
+      });
+      renderGaleria();
+    }
+
+    function poblarSelectOpciones() {
+      const select = document.getElementById("select-agregar-opcion");
+      select.innerHTML = '<option value="" class="bg-zinc-900 text-white">+ Añadir servicio...</option>';
+      ESTILOS_BASE.forEach(e => {
+        select.innerHTML += `<option value="${e.id}" class="bg-zinc-900 text-white">[${e.categoria}] ${e.nombre} - $${e.precio.toLocaleString('es-AR')}</option>`;
+      });
+    }
+
+    function agregarOpcionServicio(idStr) {
+      if (!idStr) return;
+      const estilo = ESTILOS_BASE.find(e => e.id === parseInt(idStr));
+      if (estilo && !opcionesSeleccionadas.some(o => o.id === estilo.id)) {
+        opcionesSeleccionadas.push(estilo);
+        renderOpcionesSeleccionadas();
+      }
+      document.getElementById("select-agregar-opcion").value = "";
+    }
+
+    function removerOpcion(id) {
+      opcionesSeleccionadas = opcionesSeleccionadas.filter(o => o.id !== id);
+      renderOpcionesSeleccionadas();
+    }
+
+    function limpiarOpciones() {
+      opcionesSeleccionadas = [];
+      renderOpcionesSeleccionadas();
+    }
+
+    function renderOpcionesSeleccionadas() {
+      const cont = document.getElementById("lista-opciones-seleccionadas");
+      const totalEl = document.getElementById("monto-total-turnos");
+
+      if (opcionesSeleccionadas.length === 0) {
+        cont.innerHTML = `<span class="text-zinc-500 text-[11px] italic">Ningún servicio añadido...</span>`;
+        totalEl.textContent = "0.00";
+        return;
+      }
+
+      cont.innerHTML = "";
+      let total = 0;
+      opcionesSeleccionadas.forEach(o => {
+        total += o.precio;
+        cont.innerHTML += `
+          <div class="flex justify-between items-center bg-black/75 border border-pink-900/40 px-3 py-2 rounded-xl">
+            <span class="truncate text-pink-100 font-medium">[${o.categoria}] ${o.nombre}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-amber-400 font-bold font-mono">$${o.precio.toLocaleString('es-AR')}</span>
+              <button type="button" onclick="removerOpcion(${o.id})" class="text-pink-400 font-bold px-1">✕</button>
+            </div>
+          </div>`;
+      });
+      totalEl.textContent = total.toLocaleString('es-AR', { minimumFractionDigits: 2 });
+    }
+
+    function renderGaleria() {
+      const grid = document.getElementById("grid-galeria");
+      grid.innerHTML = "";
+
+      db.transaction("fotos").objectStore("fotos").getAll().onsuccess = (e) => {
+        const fotosCustom = {};
+        e.target.result.forEach(f => fotosCustom[f.id] = f.src);
+
+        const listaFiltrada = ESTILOS_BASE.filter(e => filtroActual === 'TODOS' || e.categoria === filtroActual);
+
+        listaFiltrada.forEach(estilo => {
+          const fotoRuta = fotosCustom[estilo.id] || estilo.img;
+
+          grid.innerHTML += `
+            <div class="card-3d rounded-3xl p-4 flex flex-col justify-between group">
+              <div class="space-y-3">
+                <div class="relative h-44 rounded-2xl overflow-hidden bg-black/90 flex items-center justify-center border border-pink-900/40">
+                  <img src="${fotoRuta}" alt="${estilo.nombre}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                  <span class="absolute top-3 left-3 bg-black/85 px-2.5 py-1 rounded-xl text-[9px] font-black tracking-wider text-pink-300 border border-pink-700/40 font-sans">
+                    ${estilo.categoria}
+                  </span>
+                  <span class="absolute top-3 right-3 bg-black/85 px-3 py-1 rounded-xl text-[11px] font-bold text-amber-400 border border-amber-500/40 font-mono">
+                    $${estilo.precio.toLocaleString('es-AR')}
+                  </span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-xs text-white truncate font-luxury">${estilo.nombre}</h4>
+                </div>
+              </div>
+              <div class="pt-4 space-y-2">
+                <button onclick="reservarDesdeGaleria(${estilo.id})" class="w-full py-2.5 btn-rock rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Reservar este Estilo
+                </button>
+                ${propietarioDesbloqueado ? `
+                  <label class="block text-center text-[10px] text-amber-400 hover:text-amber-300 cursor-pointer pt-1 transition bg-amber-950/20 py-1.5 rounded-lg border border-amber-500/30">
+                    <i data-lucide="camera" class="w-3 h-3 inline"></i> [PROPIETARIO] Cambiar Foto
+                    <input type="file" accept="image/*" class="hidden" onchange="subirFotoEstilo(${estilo.id}, event)">
+                  </label>` : ''}
+              </div>
+            </div>`;
+        });
+        lucide.createIcons();
+      };
+    }
+
+    function reservarDesdeGaleria(id) {
+      agregarOpcionServicio(id);
+      switchTab('turnos');
+    }
+
+    function subirFotoEstilo(id, evt) {
+      if(!propietarioDesbloqueado) return alert("Acción restringida solo al propietario.");
+      const file = evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const tx = db.transaction("fotos", "readwrite");
+        tx.objectStore("fotos").put({ id: id, src: reader.result });
+        tx.oncomplete = () => renderGaleria();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.getElementById("form-cliente").onsubmit = (e) => {
+      e.preventDefault();
+      const tx = db.transaction("clientes", "readwrite");
+      tx.objectStore("clientes").add({
+        nombre: document.getElementById("cli-nombre").value,
+        telefono: document.getElementById("cli-telefono").value
+      });
+      tx.oncomplete = () => { e.target.reset(); cargarClientes(); alert("¡Registro exitoso! Ya puedes seleccionar tu perfil en 'Reservar Cita'."); };
+    };
+
+    function cargarClientes() {
+      const list = document.getElementById("lista-clientes");
+      const sel = document.getElementById("turno-cliente");
+      list.innerHTML = "";
+      sel.innerHTML = '<option value="" class="bg-zinc-900 text-white">Seleccionar Cliente</option>';
+
+      db.transaction("clientes").objectStore("clientes").getAll().onsuccess = (e) => {
+        e.target.result.forEach(c => {
+          list.innerHTML += `
+            <div class="bg-black/60 p-4 rounded-2xl border border-pink-900/40 flex justify-between items-center">
+              <div>
+                <p class="font-bold text-xs text-white font-luxury">${c.nombre}</p>
+                <p class="text-[11px] text-pink-200/60 mt-0.5">${c.telefono}</p>
+              </div>
+              <button onclick="eliminarCliente(${c.id})" class="p-2 text-zinc-500 hover:text-pink-400 rounded-xl transition">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>`;
+          sel.innerHTML += `<option value="${c.nombre}" class="bg-zinc-900 text-white">${c.nombre}</option>`;
+        });
+        lucide.createIcons();
+      };
+    }
+
+    function eliminarCliente(id) {
+      if (confirm("¿Eliminar cliente?")) {
+        const tx = db.transaction("clientes", "readwrite");
+        tx.objectStore("clientes").delete(id);
+        tx.oncomplete = () => cargarClientes();
+      }
+    }
+
+    function toggleSelectorHorarios() {
+      const panel = document.getElementById("panel-horarios");
+      panel.classList.toggle("hidden");
+      if (!panel.classList.contains("hidden")) generarHorariosAutomatizados();
+    }
+
+    function actualizarBotonHorario() {
+      document.getElementById("turno-hora-val").value = "";
+      document.getElementById("lbl-hora-seleccionada").textContent = "Elegir Hora";
+    }
+
+    function generarHorariosAutomatizados() {
+      const diaSel = document.getElementById("turno-fecha-dia").value;
+      const grid = document.getElementById("grid-horas");
+      grid.innerHTML = "";
+
+      db.transaction("turnos").objectStore("turnos").getAll().onsuccess = (e) => {
+        const horasOcupadas = e.target.result.filter(t => t.fecha.startsWith(diaSel)).map(t => t.fecha.split("T")[1]);
+
+        HORARIOS_PLANTILLA.forEach(hora => {
+          const ocupado = horasOcupadas.includes(hora);
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = hora;
+          btn.className = ocupado ? "py-1.5 bg-zinc-950 text-zinc-700 rounded-xl text-[11px] line-through cursor-not-allowed" : "py-1.5 bg-pink-950/40 hover:bg-pink-600 hover:text-white text-pink-200 rounded-xl text-[11px] font-bold";
+          if (!ocupado) btn.onclick = () => seleccionarHora(hora);
+          grid.appendChild(btn);
+        });
+      };
+    }
+
+    function seleccionarHora(hora) {
+      document.getElementById("turno-hora-val").value = hora;
+      document.getElementById("lbl-hora-seleccionada").textContent = `${hora} hs`;
+      document.getElementById("panel-horarios").classList.add("hidden");
+    }
+
+    document.getElementById("form-turno").onsubmit = (e) => {
+      e.preventDefault();
+      const cliente = document.getElementById("turno-cliente").value;
+      const dia = document.getElementById("turno-fecha-dia").value;
+      const hora = document.getElementById("turno-hora-val").value;
+
+      if (opcionesSeleccionadas.length === 0 || !hora) return alert("Selecciona servicio y horario.");
+
+      const servicioTexto = opcionesSeleccionadas.map(o => `[${o.categoria}] ${o.nombre}`).join(" + ");
+      const totalPrecio = opcionesSeleccionadas.reduce((acc, o) => acc + o.precio, 0);
+
+      const tx = db.transaction("turnos", "readwrite");
+      tx.objectStore("turnos").add({ cliente, fecha: `${dia}T${hora}`, servicio: servicioTexto, montoTotal: totalPrecio });
+      tx.oncomplete = () => {
+        e.target.reset();
+        limpiarOpciones();
+        cargarTurnos();
+        alert("¡Cita reservada con éxito!");
+      };
+    };
+
+    function cargarTurnos() {
+      const list = document.getElementById("lista-turnos");
+      list.innerHTML = "";
+      db.transaction("turnos").objectStore("turnos").getAll().onsuccess = (e) => {
+        e.target.result.forEach(t => {
+          const [d, h] = t.fecha.split("T");
+          list.innerHTML += `
+            <div class="bg-black/60 p-4 rounded-2xl border border-pink-900/40 flex justify-between items-center text-xs">
+              <div>
+                <p class="font-bold text-white font-luxury">${t.cliente}</p>
+                <p class="text-[11px] text-pink-200/60 mt-0.5">${t.servicio}</p>
+              </div>
+              <span class="bg-pink-950/70 px-3 py-1.5 rounded-xl text-pink-300 font-mono font-bold">${d} - ${h} hs</span>
+            </div>`;
+        });
+        lucide.createIcons();
+      };
+    }
+
+    async function exportarExcel() {
+      const wb = XLSX.utils.book_new();
+      const clientes = await new Promise(r => db.transaction("clientes").objectStore("clientes").getAll().onsuccess = e => r(e.target.result));
+      const turnos = await new Promise(r => db.transaction("turnos").objectStore("turnos").getAll().onsuccess = e => r(e.target.result));
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(clientes), "Clientes");
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(turnos), "Reservas");
+      XLSX.writeFile(wb, `Reservas_Emiliano_${new Date().toISOString().split('T')[0]}.xlsx`);
+    }
+  </script>
+</body>
+</html>
+
